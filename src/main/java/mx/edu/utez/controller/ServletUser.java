@@ -82,6 +82,13 @@ public class ServletUser extends HttpServlet {
                 break;
             case "delete":
                 // do something
+                long id2 = Long.parseLong(request.getParameter("id"));
+                if(new DaoUser().delete(id2)) {
+                    request.setAttribute("message", "Usuario eliminado correctamente");
+                }else{
+                    request.setAttribute("message", "Usuario no eleminado");
+                }
+                doGet(request, response);
                 break;
             default:
                 // no supported
